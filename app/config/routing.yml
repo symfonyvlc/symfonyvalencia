@@ -1,0 +1,8 @@
+blade_tester_light_news_bundle:
+    resource: "@BladeTesterLightNewsBundle/Resources/config/routing.yml"
+    prefix:   /news        #choose the prefix you want
+
+sf_vlc_main:
+    resource: "@SfVlcMainBundle/Resources/config/routing.yml"
+    prefix:   /
+

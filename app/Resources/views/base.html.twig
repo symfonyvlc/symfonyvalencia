@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('public/bootstrap/css/bootstrap.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="{{ path('sf_vlc_main_homepage') }}">SymfonyValencia</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="#">Quiénes somos</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            <li><a href="#">Próximos eventos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-unit">
+                <h1>Bienvenido a Symfony Valencia</h1>
+                <p>Web en desarrollo</p>
+            </div>
+
+            {% block body %}{% endblock %}
+
+            <hr>
+            <footer>
+                <p>Web creada por los miembros de SymfonyValencia</p>
+            </footer>
+        </div>
+
+        <!--
+        <script type="text/javascript" src="{{ asset('public/bootstrap/js/bootstrap.min.js') }}"></script>
+        -->
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
