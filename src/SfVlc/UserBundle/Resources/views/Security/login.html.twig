@@ -1,0 +1,5 @@
+<form id="login" class="navbar-form pull-right" action="{{ path("fos_user_security_check") }}" method="post">
+  <input class="span2" name="_username" type="text" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}">
+  <input class="span2" name="_password" type="password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}">
+  <button type="submit" class="btn">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+</form>

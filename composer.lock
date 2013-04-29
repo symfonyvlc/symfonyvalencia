@@ -3,8 +3,51 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3268eff2bea83ae63fe43c0dda130157",
+    "hash": "6a58a9cedfc1b8d2c5a0d633a111c222",
     "packages": [
+        {
+            "name": "carlescliment/handy-tests-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carlescliment/handy-tests-bundle.git",
+                "reference": "4bb5397560ad23ab12449606e7ba9ed1abb07fe9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carlescliment/handy-tests-bundle/zipball/4bb5397560ad23ab12449606e7ba9ed1abb07fe9",
+                "reference": "4bb5397560ad23ab12449606e7ba9ed1abb07fe9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/symfony": ">=2.0.12"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "BladeTester\\HandyTestsBundle": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Carles Climent Granell",
+                    "email": "carlescliment@gmail.com",
+                    "homepage": "http://www.carlescliment.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A handy toolkit for testing in Symfony 2",
+            "homepage": "https://github.com/carlescliment/handy-tests-bundle",
+            "keywords": [
+                "testing"
+            ],
+            "time": "2013-04-08 07:37:39"
+        },
         {
             "name": "carlescliment/light-news-bundle",
             "version": "dev-master",
@@ -1856,7 +1899,8 @@
     ],
     "minimum-stability": "alpha",
     "stability-flags": {
-        "carlescliment/light-news-bundle": 20
+        "carlescliment/light-news-bundle": 20,
+        "carlescliment/handy-tests-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

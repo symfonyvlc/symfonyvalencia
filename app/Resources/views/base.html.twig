@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenido a Symfony Valencia{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('public/bootstrap/css/bootstrap.css') }}" />
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -19,6 +19,9 @@
                             <li><a href="#">Contacto</a></li>
                             <li><a href="#">Próximos eventos</a></li>
                         </ul>
+
+                        {% include 'SfVlcUserBundle:Security:login.html.twig' %}
+
                     </div>
                 </div>
             </div>
