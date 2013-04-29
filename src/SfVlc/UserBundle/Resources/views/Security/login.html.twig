@@ -1,5 +1,22 @@
-<form id="login" class="navbar-form pull-right" action="{{ path("fos_user_security_check") }}" method="post">
-  <input class="span2" name="_username" type="text" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}">
-  <input class="span2" name="_password" type="password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}">
-  <button type="submit" class="btn">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-</form>
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
+
+    <form class="form-signin" id="login" action="{{ path("fos_user_security_check") }}" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <input name="_username" type="text" class="input-block-level" placeholder="Usuario">
+        <input name="_password" type="password" class="input-block-level" placeholder="Contraseña">
+
+        <label class="checkbox">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+        </label>
+        <button type="submit" class="btn btn-large btn-primary">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    </form>
+{% endblock %}
+
+

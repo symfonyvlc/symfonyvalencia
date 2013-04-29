@@ -19,8 +19,15 @@
                             <li><a href="#">Contacto</a></li>
                             <li><a href="#">Próximos eventos</a></li>
                         </ul>
-
-                        {% include 'SfVlcUserBundle:Security:login.html.twig' %}
+                        <p class="navbar-text pull-right">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                                <a id="logout-link" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                            {% else %}
+                                <a id="login-link" href="{{ path('fos_user_security_login') }}">Accede</a> o
+                                <a id="register-link" href="{{ path('fos_user_registration_register') }}">regístrate</a>
+                            {% endif %}
+                        </ul>
 
                     </div>
                 </div>
@@ -31,6 +38,8 @@
                 <h1>Bienvenido a Symfony Valencia</h1>
                 <p>Web en desarrollo</p>
             </div>
+
+            {% include '::flash-messages.html.twig' %}
 
             {% block body %}{% endblock %}
 
