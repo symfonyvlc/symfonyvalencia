@@ -11,7 +11,6 @@ class MainControllerTest extends HandyTestCase {
     public function setUp() {
         parent::setUp();
         $this->truncateTables(array('users'));
-        //$this->logout();
     }
 
     /**
@@ -91,10 +90,6 @@ class MainControllerTest extends HandyTestCase {
         $form['_username'] = $username;
         $form['_password'] = $password;
         $this->client->submit($form);
-    }
-
-    private function logout() {
-        $this->visit('fos_user_security_logout');
     }
 
 }
