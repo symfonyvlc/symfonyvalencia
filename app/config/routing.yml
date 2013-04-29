@@ -6,3 +6,6 @@ sf_vlc_main:
     resource: "@SfVlcMainBundle/Resources/config/routing.yml"
     prefix:   /
 
+sf_vlc_user:
+    resource: "@SfVlcUserBundle/Resources/config/routing.yml"
+    prefix:   /

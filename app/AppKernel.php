@@ -19,6 +19,8 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new SfVlc\UserBundle\SfVlcUserBundle(),
             new SfVlc\MainBundle\SfVlcMainBundle(),
             new BladeTester\LightNewsBundle\BladeTesterLightNewsBundle(),
             new SfVlc\NewsBundle\SfVlcNewsBundle(),

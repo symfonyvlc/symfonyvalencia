@@ -65,8 +65,12 @@ swiftmailer:
     spool:     { type: memory }
 
 blade_tester_light_news:
-    driver: doctrine/orm
     engine: twig
     classes:
         news:
             entity: 'SfVlc\NewsBundle\Entity\News'
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: SfVlc\UserBundle\Entity\User
