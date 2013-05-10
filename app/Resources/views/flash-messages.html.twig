@@ -1,25 +1,7 @@
-{% for flashMessage in app.session.flashbag.get('ok') %}
-    <div class="msg msg-ok">
-        {{ flashMessage }}
-    </div>
-{% endfor %}
-
-{% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="msg msg-ok">
-        {{ flashMessage }}
-    </div>
-{% endfor %}
-
-
-{% for flashMessage in app.session.flashbag.get('warning') %}
-    <div class="msg msg-warning">
-        {{ flashMessage }}
-    </div>
-{% endfor %}
-
-
-{% for flashMessage in app.session.flashbag.get('error') %}
-    <div class="msg msg-error">
-        {{ flashMessage }}
-    </div>
+{% for flash_level in ['success', 'info', 'warning', 'error'] %}
+    {% for flashMessage in app.session.flashbag.get(flash_level) %}
+        <div class="alert alert-{{ flash_level }}">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 {% endfor %}
