@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<form action="{{ path('sf_vlc_main_contact') }}" id="contact-form" method="POST">
+    {{ form_widget(form) }}
+    <input class="btn btn-primary" type="submit">
+</form>
+
+{% endblock %}
