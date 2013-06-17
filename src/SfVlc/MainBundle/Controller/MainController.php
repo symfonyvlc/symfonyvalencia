@@ -13,6 +13,10 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $post_manager = $this->get('blade_tester_light_news.news_manager');
+        $posts = $post_manager->findAll(array(), array('createdAt' => 'DESC'));
+        return array(
+            'posts' => $posts
+            );
     }
 }

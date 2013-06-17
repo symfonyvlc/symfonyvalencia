@@ -79,4 +79,22 @@ class MainControllerTest extends BaseControllerTest {
         $this->assertTrue($crawler->filter('a#intranet-link')->count() > 0);
     }
 
+    /**
+     * @test
+     */
+    public function itShowsPostsInTheHomePage() {
+        // Arrange
+        $this->truncateTables(array('news'));
+        $post_manager = $this->getService('blade_tester_light_news.news_manager');
+        $post_manager->create();
+        $post_manager->create();
+        $post_manager->create();
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertEquals(3, $crawler->filter('.post')->count());
+    }
+
 }

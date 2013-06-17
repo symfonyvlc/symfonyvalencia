@@ -50,8 +50,8 @@ class AdminControllerTest extends BaseControllerTest {
         $this->logInAsAdmin();
         $this->truncateTables(array('news'));
         $post_manager = $this->getService('blade_tester_light_news.news_manager');
-        $post_manager->create('One title');
-        $post_manager->create('Other title');
+        $post_manager->create();
+        $post_manager->create();
         $this->em->flush();
 
         // Act

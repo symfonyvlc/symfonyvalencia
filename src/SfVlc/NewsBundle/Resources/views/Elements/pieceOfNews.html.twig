@@ -1,0 +1,7 @@
+<div class="post">
+    <h2>{{ pieceOfNews.title }}</h2>
+    <div class="newsBody">
+        <p>Creado el {{ pieceOfNews.createdAt|date('Y-m-d') }} a las {{ pieceOfNews.createdAt|date('H:i') }}</p>
+        <p>{{ pieceOfNews.body|raw }}</p>
+    </div>
+</div>
