@@ -7,7 +7,6 @@ class MainControllerTest extends BaseControllerTest {
 
     public function setUp() {
         parent::setUp();
-        $this->truncateTables(array('users'));
     }
 
     /**
@@ -42,8 +41,7 @@ class MainControllerTest extends BaseControllerTest {
     public function itDoesNotShowALoginLinkWhenLoggedIn() {
         // Arrange
         $this->client->followRedirects();
-        $user = $this->createUser('test', 'testpass');
-        $this->login('test', 'testpass');
+        $this->loginAsNonAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_main_homepage');
@@ -58,8 +56,7 @@ class MainControllerTest extends BaseControllerTest {
     public function itShowsALogoutLinkWhenLoggedIn() {
         // Arrange
         $this->client->followRedirects();
-        $user = $this->createUser('test', 'testpass');
-        $this->login('test', 'testpass');
+        $this->loginAsNonAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_main_homepage');

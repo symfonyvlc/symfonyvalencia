@@ -9,11 +9,21 @@ abstract class BaseControllerTest extends HandyTestCase {
 
     public function setUp(array $auth = array()) {
         parent::setUp($auth);
+        $this->truncateTables(array('users'));
     }
 
+    protected function logInAsNonAdmin() {
+        $this->createUser('not_admin', 'password');
+        $this->login('not_admin', 'password');
+    }
+
+    protected function logInAsAdmin() {
+        $this->createUser('not_admin', 'password', 'ROLE_ADMIN');
+        $this->login('not_admin', 'password');
+    }
 
     protected function createUser($username, $password, $role = 'ROLE_USER') {
-        $userManager = $this->client->getKernel()->getContainer()->get('fos_user.user_manager');
+        $userManager = $this->getService('fos_user.user_manager');
         $user = $userManager->createUser();
         $user->setUserName($username);
         $user->setEmail($username . '@test.is');
@@ -32,4 +42,5 @@ abstract class BaseControllerTest extends HandyTestCase {
         $form['_password'] = $password;
         $this->client->submit($form);
     }
+
 }

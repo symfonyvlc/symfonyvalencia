@@ -6,7 +6,6 @@ class AdminControllerTest extends BaseControllerTest {
 
     public function setUp() {
         parent::setUp();
-        $this->truncateTables(array('users', 'news'));
     }
 
     /**
@@ -15,8 +14,7 @@ class AdminControllerTest extends BaseControllerTest {
     public function IShouldNotAccessToTheAdminInterfaceIfNotAdmin()
     {
         // Arrange
-        $not_admin = $this->createUser('not_admin', 'password');
-        $this->login('not_admin', 'password');
+        $this->logInAsNonAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_admin_homepage');
@@ -25,14 +23,15 @@ class AdminControllerTest extends BaseControllerTest {
         $this->assertFalse($this->client->getResponse()->isSuccessful());
     }
 
+
+
     /**
      * @test
      */
     public function IShouldAccessToTheAdminInterfaceIfAdmin()
     {
         // Arrange
-        $admin = $this->createUser('admin', 'password', 'ROLE_ADMIN');
-        $this->login('admin', 'password');
+        $this->logInAsAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_admin_homepage');
@@ -48,8 +47,8 @@ class AdminControllerTest extends BaseControllerTest {
     public function IShouldAccessToTheListOfPosts()
     {
         // Arrange
-        $admin = $this->createUser('admin', 'password', 'ROLE_ADMIN');
-        $this->login('admin', 'password');
+        $this->logInAsAdmin();
+        $this->truncateTables(array('news'));
         $post_manager = $this->getService('blade_tester_light_news.news_manager');
         $post_manager->create('One title');
         $post_manager->create('Other title');
