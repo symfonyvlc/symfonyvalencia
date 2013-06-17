@@ -1,7 +1,7 @@
-{% extends 'SfVlcMainBundle:Admin:base.html.twig' %}
+{% extends 'SfVlcNewsBundle:Admin:base.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('news_add') }}" class="pull-right">{{ 'bladetester_lightnews.label.news.add'|trans }}</a>
+    <a href="{{ path('news_add') }}" class="btn pull-right">{{ 'bladetester_lightnews.label.news.add'|trans }}</a>
 
     {% if not news %}
         <p>{{ 'bladetester_lightnews.interfaces.list.no_news'|trans }}</p>

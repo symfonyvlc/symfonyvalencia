@@ -3,7 +3,9 @@
 
 {% block primary_menu %}
     <ul class="nav">
-        <li><a href="#">Posts</a></li>
+        <li class="{% if app.request.attributes.get('_route') == 'sf_vlc_admin_posts' %}active{% endif %}">
+            <a href="{{ path('sf_vlc_admin_posts') }}">Posts</a>
+        </li>
         <li><a href="#">Usuarios</a></li>
     </ul>
 {% endblock %}
