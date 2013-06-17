@@ -54,12 +54,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/carlescliment/light-news-bundle.git",
-                "reference": "48770c8730cddc07dd91bf649168dba6702894db"
+                "reference": "2c7f31753f5f80977a810a90d3251defb88c4050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carlescliment/light-news-bundle/zipball/48770c8730cddc07dd91bf649168dba6702894db",
-                "reference": "48770c8730cddc07dd91bf649168dba6702894db",
+                "url": "https://api.github.com/repos/carlescliment/light-news-bundle/zipball/2c7f31753f5f80977a810a90d3251defb88c4050",
+                "reference": "2c7f31753f5f80977a810a90d3251defb88c4050",
                 "shasum": ""
             },
             "require": {
@@ -91,7 +91,7 @@
                 "blog",
                 "news"
             ],
-            "time": "2013-06-17 10:33:54"
+            "time": "2013-06-17 10:51:27"
         },
         {
             "name": "doctrine/annotations",
