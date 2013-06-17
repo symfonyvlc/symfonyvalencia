@@ -1,8 +1,5 @@
 {% extends 'SfVlcMainBundle:Admin:base.html.twig' %}
 
 {% block body %}
-    <p>Bienvenido, admin. Actúa con responsabilidad.</p>
-{% endblock %}
-
-{% block footer %}
+    <p>Bienvenido, <strong>{{ app.user.username }}</strong>. Actúa con responsabilidad.</p>
 {% endblock %}

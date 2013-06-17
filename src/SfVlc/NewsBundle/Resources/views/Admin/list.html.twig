@@ -1,0 +1,28 @@
+{% extends 'SfVlcMainBundle:Admin:base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('news_add') }}" class="pull-right">{{ 'bladetester_lightnews.label.news.add'|trans }}</a>
+
+    {% if not news %}
+        <p>{{ 'bladetester_lightnews.interfaces.list.no_news'|trans }}</p>
+    {% else %}
+        <p>
+            <table id="post-list" class="table">
+                <thead>
+                    <tr><th>{{ 'bladetester_lightnews.label.news.title'|trans }}</th>
+                        <th>{{ 'bladetester_lightnews.label.news.body'|trans }}</th>
+                        <th></th></tr>
+                </thead>
+                <tbody>
+                {% for pieceOfNews in news %}
+                    <tr class="post">
+                        <td>{{ pieceOfNews.title }}</td>
+                        <td>{{ pieceOfNews.body[:50]|raw }}</td>
+                        <td><a href="{{ path('news_edit', {'id' : pieceOfNews.id}) }}">{{ 'bladetester_lightnews.label.news.edit'|trans }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </p>
+    {% endif %}
+{% endblock %}
