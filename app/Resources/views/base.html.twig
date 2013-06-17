@@ -34,21 +34,26 @@
             </div>
         </div>
         <div class="container">
-            <div class="hero-unit">
-                <h1>Bienvenido a Symfony Valencia</h1>
-                <p>Web en desarrollo</p>
-            </div>
+            {% block hero %}
+                <div class="hero-unit">
+                    <h1>Bienvenido a Symfony Valencia</h1>
+                    <p>Web en desarrollo</p>
+                </div>
+            {% endblock %}
 
             {% include '::flash-messages.html.twig' %}
 
             {% block body %}{% endblock %}
 
             <hr>
+
             <footer>
-                <p>
-                    Web creada por los miembros de SymfonyValencia
-                    <a id="intranet-link" class="pull-right" href="">Zona admin</a>
-                </p>
+                {% block footer %}
+                    <p>
+                        Web creada por los miembros de SymfonyValencia
+                        <a id="intranet-link" class="pull-right" href="{{ path('sf_vlc_admin_homepage') }}">Zona admin</a>
+                    </p>
+                {% endblock %}
             </footer>
         </div>
 
