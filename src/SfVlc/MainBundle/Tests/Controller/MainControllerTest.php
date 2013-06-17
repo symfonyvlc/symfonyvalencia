@@ -72,6 +72,19 @@ class MainControllerTest extends HandyTestCase {
     }
 
 
+    /**
+     * @test
+     */
+    public function itShowsALinkToTheIntranet() {
+        // Arrange
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertTrue($crawler->filter('a#intranet-link')->count() > 0);
+    }
+
     private function createUser($username, $password) {
         $userManager = $this->client->getKernel()->getContainer()->get('fos_user.user_manager');
         $user = $userManager->createUser();
