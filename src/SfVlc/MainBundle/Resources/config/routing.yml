@@ -2,6 +2,10 @@ sf_vlc_main_homepage:
     pattern:  /
     defaults: { _controller: SfVlcMainBundle:Main:index }
 
+sf_vlc_admin_homepage:
+    pattern:  /admin
+    defaults: { _controller: SfVlcMainBundle:Admin:index }
+
 blade_tester_light_news_bundle:
     resource: "@BladeTesterLightNewsBundle/Resources/config/routing.yml"
     prefix:   /news        #choose the prefix you want
