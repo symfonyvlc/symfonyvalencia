@@ -8,8 +8,8 @@ use BladeTester\HandyTestsBundle\Model\HandyTestCase;
 class MainControllerTest extends HandyTestCase {
 
 
-    public function setUp() {
-        parent::setUp();
+    public function setUp(array $auth = array()) {
+        parent::setUp($auth);
         $this->truncateTables(array('users'));
     }
 
@@ -71,6 +71,38 @@ class MainControllerTest extends HandyTestCase {
         $this->assertTrue($crawler->filter('a#logout-link')->count() > 0);
     }
 
+    /**
+     * @test
+     */
+    public function itShowsAContactLinkInHomepage() {
+        // Arrange
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertTrue($crawler->filter('a#contact-link')->count() > 0);
+    }
+
+    /**
+     * @test
+     */
+    public function iShouldSendContactForm()
+    {
+        // Arrange
+        $this->client->followRedirects();
+        $crawler = $this->visit('sf_vlc_main_contact');
+        $form = $crawler->filter('form#contact-form')->form();
+        $form['contact[email]'] = 'asda@gmafsa.com';
+        $form['contact[name]'] = 'Pepe';
+        $form['contact[message]'] = 'El formulario no va';
+
+        // Act
+        $crawler = $this->client->submit($form);
+
+        // Assert
+        $this->assertTrue($crawler->filter('.alert-success')->count() === 1);
+    }
 
     private function createUser($username, $password) {
         $userManager = $this->client->getKernel()->getContainer()->get('fos_user.user_manager');
@@ -91,5 +123,4 @@ class MainControllerTest extends HandyTestCase {
         $form['_password'] = $password;
         $this->client->submit($form);
     }
-
 }
