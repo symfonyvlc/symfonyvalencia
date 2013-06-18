@@ -13,30 +13,33 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{{ path('sf_vlc_main_homepage') }}">SymfonyValencia</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><a href="#">Quiénes somos</a></li>
-                            <li><a id="contact-link" href="{{ path('sf_vlc_main_contact') }}">Contacto</a></li>
-                            <li><a href="#">Próximos eventos</a></li>
-                        </ul>
-                        <p class="navbar-text pull-right">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                                <a id="logout-link" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                            {% else %}
-                                <a id="login-link" href="{{ path('fos_user_security_login') }}">Accede</a> o
-                                <a id="register-link" href="{{ path('fos_user_registration_register') }}">regístrate</a>
-                            {% endif %}
-                        </ul>
-
-                    </div>
+                        <div class="nav-collapse collapse">
+                            {% block primary_menu %}
+                                <ul class="nav">
+                                    <li><a href="#">Quiénes somos</a></li>
+                                    <li><a id="contact-link" href="{{ path('sf_vlc_main_contact') }}">Contacto</a></li>
+                                    <li><a href="#">Próximos eventos</a></li>
+                                </ul>
+                            {% endblock %}
+                            <p class="navbar-text pull-right">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                                    <a id="logout-link" href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                                {% else %}
+                                    <a id="login-link" href="{{ path('fos_user_security_login') }}">Accede</a> o
+                                    <a id="register-link" href="{{ path('fos_user_registration_register') }}">regístrate</a>
+                                {% endif %}
+                            </ul>
+                        </div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="hero-unit">
-                <h1>Bienvenido a Symfony Valencia</h1>
-                <p>Web en desarrollo</p>
+                {% block hero %}
+                    <h1>Bienvenido a Symfony Valencia</h1>
+                    <p>Web en desarrollo</p>
+                {% endblock %}
             </div>
 
             {% include '::flash-messages.html.twig' %}
@@ -44,8 +47,14 @@
             {% block body %}{% endblock %}
 
             <hr>
+
             <footer>
-                <p>Web creada por los miembros de SymfonyValencia</p>
+                {% block footer %}
+                    <p>
+                        Web creada por los miembros de SymfonyValencia
+                        <a id="intranet-link" class="pull-right" href="{{ path('sf_vlc_admin_homepage') }}">Zona admin</a>
+                    </p>
+                {% endblock %}
             </footer>
         </div>
 

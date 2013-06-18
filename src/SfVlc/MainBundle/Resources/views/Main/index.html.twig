@@ -1,5 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    Hello :D!
+    {% if posts|length > 0 %}
+        {% for post in posts %}
+            {% include 'BladeTesterLightNewsBundle:Elements:pieceOfNews.html.twig' with {'pieceOfNews' : post} %}
+        {% endfor %}
+    {% else %}
+        <p>No se han publicado posts todavía</p>
+    {% endif %}
 {% endblock %}

@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+
+{% block primary_menu %}
+    <ul class="nav">
+        <li class="{% if app.request.attributes.get('_route') == 'sf_vlc_admin_posts' %}active{% endif %}">
+            <a href="{{ path('sf_vlc_admin_posts') }}">Posts</a>
+        </li>
+        <li><a href="#">Usuarios</a></li>
+    </ul>
+{% endblock %}
+
+{% block hero %}
+    <h1>SfVlc Admin</h1>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

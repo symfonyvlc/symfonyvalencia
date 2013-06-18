@@ -2,15 +2,11 @@
 
 namespace SfVlc\MainBundle\Tests\Controller;
 
-use BladeTester\HandyTestsBundle\Model\HandyTestCase;
+class MainControllerTest extends BaseControllerTest {
 
 
-class MainControllerTest extends HandyTestCase {
-
-
-    public function setUp(array $auth = array()) {
-        parent::setUp($auth);
-        $this->truncateTables(array('users'));
+    public function setUp() {
+        parent::setUp();
     }
 
     /**
@@ -45,8 +41,7 @@ class MainControllerTest extends HandyTestCase {
     public function itDoesNotShowALoginLinkWhenLoggedIn() {
         // Arrange
         $this->client->followRedirects();
-        $user = $this->createUser('test', 'testpass');
-        $this->login('test', 'testpass');
+        $this->loginAsNonAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_main_homepage');
@@ -61,8 +56,7 @@ class MainControllerTest extends HandyTestCase {
     public function itShowsALogoutLinkWhenLoggedIn() {
         // Arrange
         $this->client->followRedirects();
-        $user = $this->createUser('test', 'testpass');
-        $this->login('test', 'testpass');
+        $this->loginAsNonAdmin();
 
         // Act
         $crawler = $this->visit('sf_vlc_main_homepage');
@@ -104,23 +98,34 @@ class MainControllerTest extends HandyTestCase {
         $this->assertTrue($crawler->filter('.alert-success')->count() === 1);
     }
 
-    private function createUser($username, $password) {
-        $userManager = $this->client->getKernel()->getContainer()->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUserName($username);
-        $user->setEmail($username . '@test.is');
-        $user->setPlainPassword($password);
-        $user->setEnabled(true);
-        $userManager->updateUser($user);
-        $this->em->flush();
-        return $user;
+    /**
+     * @test
+     */
+    public function itShowsALinkToTheIntranet() {
+        // Arrange
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertTrue($crawler->filter('a#intranet-link')->count() > 0);
     }
 
-    private function login($username, $password) {
-        $crawler = $this->visit('fos_user_security_login');
-        $form = $crawler->filter('form#login')->form();
-        $form['_username'] = $username;
-        $form['_password'] = $password;
-        $this->client->submit($form);
+    /**
+     * @test
+     */
+    public function itShowsPostsInTheHomePage() {
+        // Arrange
+        $this->truncateTables(array('news'));
+        $post_manager = $this->getService('blade_tester_light_news.news_manager');
+        $post_manager->create();
+        $post_manager->create();
+        $post_manager->create();
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertEquals(3, $crawler->filter('.post')->count());
     }
 }
