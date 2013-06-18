@@ -10,6 +10,10 @@ sf_vlc_admin_posts:
     pattern:  /admin/posts
     defaults: { _controller: BladeTesterLightNewsBundle:Admin:list }
 
+sf_vlc_main_contact:
+    pattern:  /contact
+    defaults: { _controller: SfVlcMainBundle:Main:contact }
+
 blade_tester_light_news_bundle:
     resource: "@BladeTesterLightNewsBundle/Resources/config/routing.yml"
     prefix:   /news        #choose the prefix you want

@@ -65,6 +65,38 @@ class MainControllerTest extends BaseControllerTest {
         $this->assertTrue($crawler->filter('a#logout-link')->count() > 0);
     }
 
+    /**
+     * @test
+     */
+    public function itShowsAContactLinkInHomepage() {
+        // Arrange
+
+        // Act
+        $crawler = $this->visit('sf_vlc_main_homepage');
+
+        // Assert
+        $this->assertTrue($crawler->filter('a#contact-link')->count() > 0);
+    }
+
+    /**
+     * @test
+     */
+    public function iShouldSendContactForm()
+    {
+        // Arrange
+        $this->client->followRedirects();
+        $crawler = $this->visit('sf_vlc_main_contact');
+        $form = $crawler->filter('form#contact-form')->form();
+        $form['contact[email]'] = 'asda@gmafsa.com';
+        $form['contact[name]'] = 'Pepe';
+        $form['contact[message]'] = 'El formulario no va';
+
+        // Act
+        $crawler = $this->client->submit($form);
+
+        // Assert
+        $this->assertTrue($crawler->filter('.alert-success')->count() === 1);
+    }
 
     /**
      * @test
@@ -96,5 +128,4 @@ class MainControllerTest extends BaseControllerTest {
         // Assert
         $this->assertEquals(3, $crawler->filter('.post')->count());
     }
-
 }
