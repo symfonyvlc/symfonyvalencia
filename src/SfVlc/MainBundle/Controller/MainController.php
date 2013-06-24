@@ -39,7 +39,7 @@ class MainController extends Controller
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Email de Symfony Valencia')
                     ->setFrom($contact->email)
-                    ->setTo('symfony_vlc@gmail.com')
+                    ->setTo('symfonyvlc@gmail.com')
                     ->setBody($contact->name . ' ' . $contact->message)
                 ;
 
