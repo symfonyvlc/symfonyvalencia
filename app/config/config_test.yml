@@ -15,3 +15,9 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+
+services:
+    handy_tests.factory_girl:
+        class: "BladeTester\HandyTestsBundle\Model\FactoryGirl"
+        arguments: ['SfVlc\MainBundle\Factory', "@doctrine.orm.entity_manager"]

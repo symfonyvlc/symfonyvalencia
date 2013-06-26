@@ -128,4 +128,5 @@ class MainControllerTest extends BaseControllerTest {
         // Assert
         $this->assertEquals(3, $crawler->filter('.post')->count());
     }
+
 }
