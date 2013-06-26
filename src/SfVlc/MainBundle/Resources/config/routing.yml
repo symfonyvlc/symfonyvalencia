@@ -2,6 +2,14 @@ sf_vlc_main_homepage:
     pattern:  /
     defaults: { _controller: SfVlcMainBundle:Main:index }
 
+sf_vlc_main_contact:
+    pattern:  /contact
+    defaults: { _controller: SfVlcMainBundle:Main:contact }
+
+sf_vlc_main_members:
+    pattern:  /members
+    defaults: { _controller: SfVlcMainBundle:Members:list }
+
 sf_vlc_admin_homepage:
     pattern:  /admin
     defaults: { _controller: SfVlcMainBundle:Admin:index }
@@ -10,9 +18,6 @@ sf_vlc_admin_posts:
     pattern:  /admin/posts
     defaults: { _controller: BladeTesterLightNewsBundle:Admin:list }
 
-sf_vlc_main_contact:
-    pattern:  /contact
-    defaults: { _controller: SfVlcMainBundle:Main:contact }
 
 blade_tester_light_news_bundle:
     resource: "@BladeTesterLightNewsBundle/Resources/config/routing.yml"
