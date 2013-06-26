@@ -4,7 +4,7 @@
 
     {% if members %}
         <ul class="members">
-            {% for member in members %}
+            {% for member in members|shuffle %}
                 <li class="member">
                     <h3>{{ member.username }}</h3>
                 </li>
