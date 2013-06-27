@@ -7,7 +7,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="SfVlc\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="users")
  */
 class User extends BaseUser

@@ -16,8 +16,12 @@
                         <div class="nav-collapse collapse">
                             {% block primary_menu %}
                                 <ul class="nav">
-                                    <li><a href="#">Quiénes somos</a></li>
-                                    <li><a id="contact-link" href="{{ path('sf_vlc_main_contact') }}">Contacto</a></li>
+                                    <li class="{% if app.request.attributes.get('_route') == 'sf_vlc_main_members' %}active{% endif %}">
+                                        <a href="{{ path('sf_vlc_main_members') }}">Quiénes somos</a>
+                                    </li>
+                                    <li class="{% if app.request.attributes.get('_route') == 'sf_vlc_main_contact' %}active{% endif %}">
+                                        <a id="contact-link" href="{{ path('sf_vlc_main_contact') }}">Contacto</a>
+                                    </li>
                                     <li><a href="#">Próximos eventos</a></li>
                                 </ul>
                             {% endblock %}

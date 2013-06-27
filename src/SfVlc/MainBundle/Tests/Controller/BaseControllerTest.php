@@ -18,21 +18,17 @@ abstract class BaseControllerTest extends HandyTestCase {
     }
 
     protected function logInAsAdmin() {
-        $this->createUser('not_admin', 'password', 'ROLE_ADMIN');
-        $this->login('not_admin', 'password');
+        $this->createUser('admin', 'password', 'ROLE_ADMIN');
+        $this->login('admin', 'password');
     }
 
     protected function createUser($username, $password, $role = 'ROLE_USER') {
-        $userManager = $this->getService('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUserName($username);
-        $user->setEmail($username . '@test.is');
-        $user->setPlainPassword($password);
-        $user->setEnabled(true);
-        $user->addRole($role);
-        $userManager->updateUser($user);
-        $this->em->flush();
-        return $user;
+        $manager = $this->getService('fos_user.user_manager');
+        return $this->create('User', array('manager' => $manager,
+                                           'username' => $username,
+                                           'password' => $password,
+                                           'roles' => array($role)));
+
     }
 
     protected function login($username, $password) {

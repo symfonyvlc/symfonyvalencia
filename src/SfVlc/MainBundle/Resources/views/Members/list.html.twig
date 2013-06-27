@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {% if members %}
+        <ul class="members">
+            {% for member in members|shuffle %}
+                <li class="member">
+                    <h3>{{ member.username }}</h3>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay miembros de SymfonyValencia. ¿¡Cómo es posible!?</p>
+    {% endif %}
+
+{% endblock %}
