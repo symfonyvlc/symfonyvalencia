@@ -2,21 +2,8 @@
 
 namespace SfVlc\MainBundle\Twig;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\HttpKernel;
-
 class SfVlcExtension extends \Twig_Extension
 {
-
-    private $request;
-
-    public function onKernelRequest(GetResponseEvent $event) {
-        if ($event->getRequestType() === HttpKernel::MASTER_REQUEST) {
-            $this->request = $event->getRequest();
-        }
-    }
 
     public function getFilters()
     {
@@ -26,7 +13,7 @@ class SfVlcExtension extends \Twig_Extension
     }
 
 
-    public function shuffle(array $collection) {
+    public function shuffle($collection) {
         if ($collection instanceof Traversable) {
            $collection = iterator_to_array($collection, false);
         }
@@ -36,7 +23,7 @@ class SfVlcExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'sfvlc extension';
+        return 'sfvlc_extension';
     }
 }
 

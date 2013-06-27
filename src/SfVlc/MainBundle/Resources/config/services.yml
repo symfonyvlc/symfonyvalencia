@@ -6,4 +6,3 @@ services:
         class: SfVlc\MainBundle\Twig\SfVlcExtension
         tags:
             - { name: twig.extension }
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
