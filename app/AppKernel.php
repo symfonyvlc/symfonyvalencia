@@ -26,13 +26,13 @@ class AppKernel extends Kernel
             new SfVlc\NewsBundle\SfVlcNewsBundle(),
         );
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+        if (in_array($this->getEnvironment(), array('dev', 'test', 'travis'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
-        if ('test' === $this->getEnvironment()) {
+        if (in_array($this->getEnvironment(), array('test', 'travis'))) {
             $bundles[] = new BladeTester\HandyTestsBundle\BladeTesterHandyTestsBundle();
         }
 

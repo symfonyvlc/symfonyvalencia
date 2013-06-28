@@ -5,8 +5,8 @@ namespace SfVlc\MainBundle\Tests\Controller;
 class MembersControllerTest extends BaseControllerTest {
 
 
-    public function setUp() {
-        parent::setUp();
+    public function setUp(array $auth = array()) {
+        parent::setUp($auth);
     }
 
     /**
