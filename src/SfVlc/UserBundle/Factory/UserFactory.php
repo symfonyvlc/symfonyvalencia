@@ -1,6 +1,6 @@
 <?php
 
-namespace SfVlc\MainBundle\Factory;
+namespace SfVlc\UserBundle\Factory;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use BladeTester\HandyTestsBundle\Model\FactoryInterface;
@@ -14,20 +14,28 @@ class UserFactory implements FactoryInterface {
     }
 
 
-    public function build(array $attributes)
+    public function getName()
     {
+        return 'User';
     }
 
 
-    public function create(array $attributes)
+    public function build(array $attributes)
     {
         $manager = $attributes['manager'];
         $user = $manager->createUser();
         $this->setDefaultFields($user, $attributes);
         $this->addRolesToUser($user, $attributes);
         $manager->updateUser($user);
+        return $user;
+    }
+
+
+    public function create(array $attributes)
+    {
+        $user = $this->build($attributes);
         $this->om->flush();
-        return $manager;
+        return $user;
     }
 
 
