@@ -1,13 +1,13 @@
 language: php
 
 php:
-  - 5.3.3
   - 5.3
   - 5.4
+  - 5.5
 
 before_script:
     - composer install -n
-    - app/console doctrine:database:drop -e test --force
+    - app/console doctrine:query:sql "DROP DATABASE IF EXISTS symfonyvalencia_test;"
     - app/console doctrine:database:create -e test
     - app/console doctrine:schema:create -e test
 
