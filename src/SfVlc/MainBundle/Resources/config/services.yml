@@ -13,3 +13,6 @@ services:
     sf_vlc_main.contact_configuration:
         class: SfVlc\MainBundle\Mailer\ContactConfiguration
         arguments: [ %sf_vlc.contact_settings% ]
+
+imports:
+    - { resource: factories.yml }

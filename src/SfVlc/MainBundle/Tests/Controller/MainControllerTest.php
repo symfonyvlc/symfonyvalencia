@@ -2,6 +2,8 @@
 
 namespace SfVlc\MainBundle\Tests\Controller;
 
+use SfVlc\MainBundle\Form\Model\Contact;
+
 class MainControllerTest extends BaseControllerTest {
 
 
@@ -96,6 +98,30 @@ class MainControllerTest extends BaseControllerTest {
 
         // Assert
         $this->assertTrue($crawler->filter('.alert-success')->count() === 1);
+    }
+
+    /**
+     * @test
+     */
+    public function iShoulInvokeSendMethod()
+    {
+        // Arrange
+        $mailerMock = $mailer = $this
+            ->getMockBuilder('\Swift_Mailer')
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+        $contactMock = $this->getMock('Contact');
+        $contactConfiguration = $this->getService('sf_vlc_main.contact_configuration');
+        $mailer = new \SfVlc\MainBundle\Mailer\Mailer($mailerMock, $contactConfiguration);
+ 
+        $contact = $this->create('Contact');
+        
+        // Expect
+        $mailerMock->expects($this->once())->method('send');
+ 
+        // Act
+        $mailer->sendContactEmail($contact);
     }
 
     /**
