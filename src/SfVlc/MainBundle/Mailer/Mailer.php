@@ -10,7 +10,7 @@ class Mailer
 	protected $mailer;
 	protected $settings;
 
-	function __construct($mailer, ContactConfigurationInterface $settings)
+	function __construct(\Swift_Mailer $mailer, ContactConfigurationInterface $settings)
 	{
 		$this->mailer = $mailer;
 		$this->settings = $settings;
