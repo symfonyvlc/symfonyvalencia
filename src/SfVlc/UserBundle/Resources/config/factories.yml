@@ -1,6 +1,6 @@
 services:
     sfvlc.handy_test.user_factory:
         class: SfVlc\UserBundle\Factory\UserFactory
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@fos_user.user_manager"]
         tags:
             - { name: handy_tests.factory }
