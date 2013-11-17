@@ -1,5 +1,0 @@
-services:
-    sfvlc.handy_test.contact_factory:
-        class: SfVlc\MainBundle\Factory\ContactFactory
-        tags:
-            - { name: handy_tests.factory }

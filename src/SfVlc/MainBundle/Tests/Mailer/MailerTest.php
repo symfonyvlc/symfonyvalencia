@@ -2,32 +2,32 @@
 
 namespace SfVlc\MainBundle\Tests\Controller;
 
-use SfVlc\MainBundle\Form\Model\Contact;
 use SfVlc\MainBundle\Mailer\Mailer;
 
-class MailerTest extends BaseControllerTest {
+class MailerTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test 
      * @group mailer
      */
-    public function iShoulInvokeSendMethod()
+    public function itSendsEmails()
     {
         // Arrange
-        $mailerMock = $mailer = $this
+        $mailerMock = $this
             ->getMockBuilder('\Swift_Mailer')
             ->disableOriginalConstructor()
             ->getMock()
         ;
-        $contactMock = $this->getMock('Contact');
-        $contactConfiguration = $this->getService('sf_vlc_main.contact_configuration');
+        $contact = $this->getMock('SfVlc\MainBundle\Form\Model\Contact');
+        $contactConfiguration = $this
+            ->getMockBuilder('SfVlc\MainBundle\Mailer\ContactConfiguration')
+            ->disableOriginalConstructor()
+            ->getMock();
         $mailer = new Mailer($mailerMock, $contactConfiguration);
- 
-        $contact = $this->create('Contact');
         
         // Expect
         $mailerMock->expects($this->once())->method('send');
- 
+
         // Act
         $mailer->sendContactEmail($contact);
     }
