@@ -26,7 +26,7 @@ class UserFactory implements FactoryInterface {
         $user = $manager->createUser();
         $this->setDefaultFields($user, $attributes);
         $this->addRolesToUser($user, $attributes);
-        $manager->updateUser($user);
+        $manager->updateUser($user, false);
         return $user;
     }
 
