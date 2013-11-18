@@ -2,6 +2,8 @@
 
 namespace SfVlc\MainBundle\Tests\Controller;
 
+use SfVlc\MainBundle\Form\Model\Contact;
+
 class MainControllerTest extends BaseControllerTest {
 
 

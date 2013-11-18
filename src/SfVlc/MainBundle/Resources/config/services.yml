@@ -6,3 +6,10 @@ services:
         class: SfVlc\MainBundle\Twig\SfVlcExtension
         tags:
             - { name: twig.extension }
+    sf_vlc_main.mailer:
+        class: SfVlc\MainBundle\Mailer\Mailer
+        arguments: [@mailer, @sf_vlc_main.contact_configuration]
+
+    sf_vlc_main.contact_configuration:
+        class: SfVlc\MainBundle\Mailer\ContactConfiguration
+        arguments: [ %sf_vlc.contact_settings% ]

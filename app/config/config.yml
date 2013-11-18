@@ -71,3 +71,8 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: SfVlc\UserBundle\Entity\User
+
+parameters:
+    sf_vlc.contact_settings:
+        subject: 'Contacto desde Symfony Valencia'
+        to: [ 'symfonyvlc@gmail.com' ]
