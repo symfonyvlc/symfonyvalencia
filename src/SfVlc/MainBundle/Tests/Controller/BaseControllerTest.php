@@ -23,9 +23,7 @@ abstract class BaseControllerTest extends HandyTestCase {
     }
 
     protected function createUser($username, $password, $role = 'ROLE_USER') {
-        $manager = $this->getService('fos_user.user_manager');
-        return $this->create('User', array('manager' => $manager,
-                                           'username' => $username,
+        return $this->create('User', array('username' => $username,
                                            'password' => $password,
                                            'roles' => array($role)));
 
