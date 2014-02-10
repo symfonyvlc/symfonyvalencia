@@ -131,4 +131,16 @@ class MainControllerTest extends BaseControllerTest {
         $this->assertEquals(3, $crawler->filter('.post')->count());
     }
 
+    /**
+     * @test
+     */
+    public function itShowsARecoverLinkInLoginPage() {
+        // Arrange
+
+        // Act
+        $crawler = $this->visit('fos_user_security_login');
+
+        // Assert
+        $this->assertTrue($crawler->filter('a#forget-password-link')->count() > 0);
+    }
 }
